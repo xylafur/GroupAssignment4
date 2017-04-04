@@ -45,6 +45,15 @@ public:
             bubbleUp(val, index);
         }//end else
     }//end insert
+    void deleteAtIndex(int index){
+        if( index > realSize )
+            std::cout<<"Invalid index to delete bruh\n";
+        else{
+            for( int i = index; i < realSize; i++)
+                arr[i] = arr[i+1];
+            realSize--;
+        }
+    }
     void print(){
         for(int i = 0; i < size; i++){
             std::cout<<arr[i];

@@ -17,6 +17,7 @@
  *
  */
 
+/*
 //function to take in a function pointer and return how long it took to complete
 double timerWrapper( void (*func)(void) ){
 	func();
@@ -36,8 +37,25 @@ void callHashFunctions(){
     
     double time = timerWrapper( myHash.*func );
 }
+*/
+
+void callSortedrrayFunctions(){
+    }
+
+void callUnsortedArrayFunctions(){
+    UnsortedArray<int> arr(10);
+    for(int i = 0; i < 10; i++)
+        arr.insert(i);
+    arr.print();
+    std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
+    std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
+    std::cout<<"deleting index 5..\n";
+    arr.deleteAtIndex(5);
+    arr.print();
+}
 
 int main(){
-	callHashFunctions();
+	//callHashFunctions();
+    callUnsortedArrayFunctions();
 }
 
