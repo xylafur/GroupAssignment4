@@ -68,7 +68,7 @@ public:
 
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to insert: " << duration_cast<milliseconds>(stop - start).count() << " seconds" << std::endl;
+        std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
     }
     void print(){
         std::cout<<"{ ";
@@ -93,7 +93,7 @@ public:
         }
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to search: " << duration_cast<milliseconds>(stop - start).count() << " seconds" << std::endl;
+        std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
         
         return false;
     }
@@ -120,7 +120,7 @@ public:
 
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to delete: " << duration_cast<milliseconds>(stop - start).count() << " seconds" << std::endl;
+        std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
     }
 };
 
