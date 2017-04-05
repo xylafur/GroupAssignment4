@@ -71,13 +71,33 @@ void callHashFunctions(int size, fileNode *head){
 void callSortedArrayFunctions(int size, fileNode *head){
     std::cout<<"Calling sorted Array Functions\n";
     SortedArray<int> arr(size);
+    auto start = high_resolution_clock::now();
     for(int i = 0; i < size; i++, head=head->next)
         arr.insert(head->val);
+    auto stop = high_resolution_clock::now();
+    std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() 
+            << " nanoseconds" << std::endl;
     arr.print();
-    std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
-    std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
-    std::cout<<"deleting index 5..\n";
-    arr.deleteAtIndex(5);
+    //std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
+    //std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
+    //std::cout<<"deleting index 5..\n";
+    start = high_resolution_clock::now();
+    for (int i = 10; i > 0; i--)
+    {
+        arr.deleteAtIndex(i);
+    }
+    stop = high_resolution_clock::now();
+    std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() 
+            << " nanoseconds" << std::endl;
+    //arr.deleteAtIndex(5);
+    
+    start = high_resolution_clock::now();
+    for(int i = 0; i < 10; i++)
+        arr.search(i);
+    stop = high_resolution_clock::now();
+    std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() 
+            << " nanoseconds" << std::endl;
+    
     arr.print();
     std::cout<<"\n\n";
 
