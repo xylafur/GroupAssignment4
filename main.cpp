@@ -5,6 +5,7 @@
 #include "ADTs/hasMap.h"
 #include "ADTs/hashedArray.h"
 #include "ADTs/unsortedArray.h"
+#include "filereader.h"
 /*
  *  Need a has map, a sorted array and an unsorted array.
  *
@@ -22,7 +23,7 @@ struct stats{
 };
 //function to take in a function pointer and return how long it took to complete
 double timerWrapper( void (*func)(void) ){
-	func();
+    func();
 }
 
 void otherFunction(){
@@ -67,7 +68,7 @@ void callUnsortedArrayFunctions(){
 }
 
 int main(){
-	callHashFunctions();
+    callHashFunctions();
     //callUnsortedArrayFunctions();
     //callSortedArrayFunctions();
 }
