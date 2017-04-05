@@ -1,9 +1,4 @@
-//
-// Created by Aaron on 4/4/2017.
-//
 
-#ifndef GROUPASSIGN4_SORTEDARRAY_H
-#define GROUPASSIGN4_SORTEDARRAY_H
 
 #ifndef SORTED_ARRAY
 #define SORTED_ARRAY
@@ -138,5 +133,3 @@ public:
 
 #endif
 
-
-#endif //GROUPASSIGN4_SORTEDARRAY_H
