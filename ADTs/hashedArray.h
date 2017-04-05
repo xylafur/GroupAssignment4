@@ -1,7 +1,18 @@
+//
+// Created by Aaron on 4/5/2017.
+//
+
 #ifndef HASHEDARRAY
-    #define HASHEDARRAY
+#define HASHEDARRAY
+#include <iostream>
 #include <stdlib.h>
 #include <functional>
+#include <ctime>
+#include <chrono>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std::chrono;
 
 template <class V>
 struct hashedArrayNode{
@@ -15,7 +26,7 @@ private:
     std::hash<T> hasher;
     int arraySize = 7;
     hashedArrayNode<T> ** arr;
-    
+
     void deleteLinkedList(hashedArrayNode<T> * head){
         hashedArrayNode<T> * temp = head;
         while(temp!=NULL){
@@ -34,6 +45,8 @@ public:
             deleteLinkedList(arr[i]);
     }
     void addElement(T value){
+        auto start = high_resolution_clock::now();
+
         int pos = (int)( hasher(value) % arraySize);
         if( arr[pos] == NULL){
             arr[pos] = new hashedArrayNode<T>;
@@ -47,19 +60,25 @@ public:
             temp = temp->next;
             temp->value = value;
         }
+
+        auto stop = high_resolution_clock::now();
+
+        std::cout << "Time to insert: " << duration_cast<milliseconds>(stop - start).count() << " seconds" << std::endl;
     }
     void print(){
         std::cout<<"{ ";
         for(int i = 0; i < arraySize; i++){
             hashedArrayNode<T> * temp = arr[i];
             while(temp != NULL){
-                std::cout<<temp->value<<", ";
+                std::cout << temp->value<<", ";
                 temp = temp->next;
             }
         }
         std::cout<<" }"<<std::endl;
     }
     bool search(T val){
+        auto start = high_resolution_clock::now();
+        
         int pos = (int)( hasher(val) % arraySize );
         hashedArrayNode<T> *node = arr[pos];
         while(node != NULL){
@@ -67,9 +86,15 @@ public:
                 return true;
             node = node->next;
         }
+        auto stop = high_resolution_clock::now();
+
+        std::cout << "Time to search: " << duration_cast<milliseconds>(stop - start).count() << " seconds" << std::endl;
+        
         return false;
     }
     void deleteByValue(T val){
+        auto start = high_resolution_clock::now();
+        
         int pos = (int)( hasher(val) % arraySize );
         hashedArrayNode<T> *node = arr[pos];
         if(node->value = val){
@@ -87,7 +112,12 @@ public:
             }
             node = node->next;
         }
+
+        auto stop = high_resolution_clock::now();
+
+        std::cout << "Time to delete: " << duration_cast<milliseconds>(stop - start).count() << " seconds" << std::endl;
     }
 };
 
 #endif
+
