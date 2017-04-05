@@ -39,6 +39,8 @@ private:
 public:
     HashedArray<T>(){
         arr = new hashedArrayNode<T> * [this->arraySize];
+        for(int i = 0; i < arraySize; i++)
+            arr[i] = NULL;
     }
     ~HashedArray<T>(){
         for(int i = 0; i < arraySize; i++)
@@ -48,17 +50,19 @@ public:
         auto start = high_resolution_clock::now();
 
         int pos = (int)( hasher(value) % arraySize);
+        std::cout<<"pos is "<<pos<<"\tcurrent val is "<<value<<std::endl;
         if( arr[pos] == NULL){
             arr[pos] = new hashedArrayNode<T>;
             arr[pos]->value = value;
+            arr[pos]->next = NULL;
         }
         else{
             hashedArrayNode<T> * temp = arr[pos];
-            while(temp->next != NULL)
+            while(temp != NULL)
                 temp = temp->next;
-            temp->next = new hashedArrayNode<T>;
-            temp = temp->next;
+            temp = new hashedArrayNode<T>;
             temp->value = value;
+            temp->next = NULL;
         }
 
         auto stop = high_resolution_clock::now();
