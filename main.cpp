@@ -68,6 +68,9 @@ void callUnsortedArrayFunctions(){
 }
 
 int main(){
+    std::cout.setf(ios::fixed | ios::showpoint);
+    std::cout.precision(20);
+    
     callHashFunctions();
     //callUnsortedArrayFunctions();
     //callSortedArrayFunctions();
