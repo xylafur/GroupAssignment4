@@ -6,6 +6,11 @@
 #include "ADTs/hashedArray.h"
 #include "ADTs/unsortedArray.h"
 #include "filereader.h"
+#include <ctime>
+#include <chrono>
+#include <cstdlib>
+#include <iomanip>
+
 /*
  *  Need a has map, a sorted array and an unsorted array.
  *
@@ -36,14 +41,30 @@ void otherFunction(){
 void callHashFunctions(int size, fileNode *head){
     std::cout<<"Calling hash functions"<<std::endl;
     HashedArray<int> *arr = new HashedArray<int>();
+    auto start = high_resolution_clock::now();
     for(int i = 0; i < size; i++, head=head->next)
         arr->addElement(head->val);
+    auto stop = high_resolution_clock::now();
+
+    std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() 
+            << " nanoseconds" << std::endl;
+    
     arr->print();
-    std::cout<<"searching for 5.. found = " << arr->search(5) <<std::endl;
-    std::cout<<"searching for 11.. found = " << arr->search(11) <<std::endl;
-    std::cout<<"deleting value 5..\n";
-    arr->deleteByValue(5);
-    arr->print();
+
+    start = high_resolution_clock::now();
+    for(int i = 0; i < 10; i++)
+        arr->search(i);
+    stop = high_resolution_clock::now();
+    std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() 
+            << " nanoseconds" << std::endl;
+
+    start = high_resolution_clock::now();
+    for(int i = 0; i < 10; i++)
+        arr->deleteByValue(i);
+    stop = high_resolution_clock::now();
+    std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() 
+            << " nanoseconds" << std::endl;
+
     std::cout<<std::endl;
 }
 
