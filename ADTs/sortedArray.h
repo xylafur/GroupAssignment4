@@ -38,7 +38,7 @@ public:
         delete(arr);
     }
     void insert(T val){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
 
         if(realSize >= size)
             std::cout<<"trying to put to many elements in your sorted array..\n";
@@ -56,13 +56,13 @@ public:
             bubbleUp(val, index);
         }//end else
 
-        auto stop = high_resolution_clock::now();
+       // auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+        //std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
 
     }//end insert
     void deleteAtIndex(int index){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
 
         if( index > realSize )
             std::cout<<"Invalid index to delete bruh\n";
@@ -72,9 +72,9 @@ public:
             realSize--;
         }
 
-        auto stop = high_resolution_clock::now();
+        //auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+        //std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
     }
     int searchHelper(T val, int hi, int lo){
         if(hi < lo)
@@ -112,14 +112,14 @@ public:
         return -1;
     }
     int search(T val){
-        auto start = high_resolution_clock::now();
+       // auto start = high_resolution_clock::now();
 
         std::cout<<"calling search helper with the values hi:"<<realSize<<std::endl;
         //return searchHelper(val, realSize, 0);
 
-        auto stop = high_resolution_clock::now();
+       // auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+       // std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
         return iterativeBinSearch(val);
     }
     void print(){
