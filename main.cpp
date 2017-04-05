@@ -17,7 +17,6 @@
  *
  */
 
-/*
 //function to take in a function pointer and return how long it took to complete
 double timerWrapper( void (*func)(void) ){
 	func();
@@ -28,19 +27,29 @@ void otherFunction(){
 }
 
 void callHashFunctions(){
-    //void (*funcPointer) (void);
-	typedef void (HashedArray<int>::*funcPointer)();
-    funcPointer func = &HashedArray::print();
-
-	HashedArray<int> myHash();
-
-    
-    double time = timerWrapper( myHash.*func );
+    HashedArray<int> *arr = new HashedArray<int>();
+    for(int i = 0; i < 10; i++)
+        arr->addElement(i);
+    arr->print();
+    std::cout<<"searching for 5.. found = " << arr->search(5) <<std::endl;
+    std::cout<<"searching for 11.. found = " << arr->search(11) <<std::endl;
+    std::cout<<"deleting value 5..\n";
+    arr->deleteByValue(5);
+    arr->print();
 }
-*/
 
-void callSortedrrayFunctions(){
-    }
+void callSortedArrayFunctions(){
+    SortedArray<int> arr(10);
+    for(int i = 11; i > 0; i--)
+        arr.insert(i);
+    arr.print();
+    std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
+    std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
+    std::cout<<"deleting index 5..\n";
+    arr.deleteAtIndex(5);
+    arr.print();
+
+}
 
 void callUnsortedArrayFunctions(){
     UnsortedArray<int> arr(10);
@@ -55,7 +64,8 @@ void callUnsortedArrayFunctions(){
 }
 
 int main(){
-	//callHashFunctions();
-    callUnsortedArrayFunctions();
+	callHashFunctions();
+    //callUnsortedArrayFunctions();
+    //callSortedArrayFunctions();
 }
 

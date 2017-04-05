@@ -59,8 +59,35 @@ public:
         }
         std::cout<<" }"<<std::endl;
     }
+    bool search(T val){
+        int pos = (int)( hasher(val) % arraySize );
+        hashedArrayNode<T> *node = arr[pos];
+        while(node != NULL){
+            if( node->value == val)
+                return true;
+            node = node->next;
+        }
+        return false;
+    }
+    void deleteByValue(T val){
+        int pos = (int)( hasher(val) % arraySize );
+        hashedArrayNode<T> *node = arr[pos];
+        if(node->value = val){
+            //case where the first value in the list is what we want to delete
+            arr[pos] = node->next;
+            delete(node);
+        }
 
-
+        while(node != NULL && node->next != NULL){
+            if( node->next->value == val )
+            {
+                hashedArrayNode<T> *temp = node->next;
+                node->next = temp->next;
+                delete(temp);
+            }
+            node = node->next;
+        }
+    }
 };
 
 #endif

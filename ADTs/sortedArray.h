@@ -54,9 +54,49 @@ public:
             realSize--;
         }
     }
+    int searchHelper(T val, int hi, int lo){
+        if(hi < lo)
+            return -1;
+        int mid = (hi - lo) / 2;
+        std::cout<<"current hi: "<<hi<<" current lo: "<<lo<<" current val: "<<arr[mid]<<std::endl;
+        if( arr[mid] == val )
+            return mid;
+        else if( arr[mid] < val)
+            return searchHelper(val, hi, mid+1);
+        else
+            return searchHelper(val, mid, lo);
+            
+    }
+    int iterativeBinSearch(T val) {
+        int lo = 0, hi = realSize, mid = (lo + hi) / 2;
+        while (lo != mid && hi != mid) {
+            if (arr[mid] == val) {
+                return mid;
+            }
+            if (val < arr[mid]) {
+                hi = mid - 1;
+            } else {
+                lo = mid + 1;
+            }
+            mid = (lo + hi) / 2;
+        }
+        // will stop when hi or lo is mid
+        if (arr[hi] == val) {
+            return hi;
+        }
+        if (arr[lo] == val) {
+            return lo;
+        }
+        return -1;
+    }
+    int search(T val){
+        std::cout<<"calling search helper with the values hi:"<<realSize<<std::endl;
+        //return searchHelper(val, realSize, 0);
+        return iterativeBinSearch(val);
+    }
     void print(){
         for(int i = 0; i < size; i++){
-            std::cout<<arr[i];
+            std::cout<<arr[i]<<" ";
         }
         std::cout<<std::endl;
     }
