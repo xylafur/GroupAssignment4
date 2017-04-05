@@ -16,7 +16,10 @@
  *      record time to do this as well.
  *
  */
-
+struct stats{
+    std::string operation;
+    double timeTaken;
+};
 //function to take in a function pointer and return how long it took to complete
 double timerWrapper( void (*func)(void) ){
 	func();
