@@ -37,7 +37,7 @@ public:
     }
     void insert(T val){
         auto start = high_resolution_clock::now();
-        
+
         if(realSize >= size)
             std::cout<<"trying to put to many elements in your sorted array..\n";
         else{
@@ -57,11 +57,11 @@ public:
         auto stop = high_resolution_clock::now();
 
         std::cout << "Time to insert: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
-        
+
     }//end insert
     void deleteAtIndex(int index){
         auto start = high_resolution_clock::now();
-        
+
         if( index > realSize )
             std::cout<<"Invalid index to delete bruh\n";
         else{
@@ -111,12 +111,12 @@ public:
     }
     int search(T val){
         auto start = high_resolution_clock::now();
-        
+
         std::cout<<"calling search helper with the values hi:"<<realSize<<std::endl;
         //return searchHelper(val, realSize, 0);
 
         auto stop = high_resolution_clock::now();
-        
+
         std::cout << "Time to search: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
         return iterativeBinSearch(val);
     }
@@ -130,3 +130,6 @@ public:
 
 
 #endif
+
+
+
