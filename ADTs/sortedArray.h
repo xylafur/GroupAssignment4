@@ -114,7 +114,6 @@ public:
     int search(T val){
        // auto start = high_resolution_clock::now();
 
-        std::cout<<"calling search helper with the values hi:"<<realSize<<std::endl;
         //return searchHelper(val, realSize, 0);
 
        // auto stop = high_resolution_clock::now();

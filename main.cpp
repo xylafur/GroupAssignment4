@@ -114,7 +114,7 @@ void callUnsortedArrayFunctions(int size, fileNode *head){
 
     std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() 
             << " nanoseconds" << std::endl;
-
+    arr.print();
     start = high_resolution_clock::now();
     for(int i = 10; i > 0; i--)
         arr.deleteAtIndex(i);
@@ -131,13 +131,6 @@ void callUnsortedArrayFunctions(int size, fileNode *head){
     std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() 
             << " nanoseconds" << std::endl;
 
-
-    arr.print();
-    std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
-    std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
-    std::cout<<"deleting index 5..\n";
-    arr.deleteAtIndex(5);
-    arr.print();
     std::cout<<"\n\n";
 }
 
