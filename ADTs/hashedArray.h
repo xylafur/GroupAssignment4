@@ -50,7 +50,6 @@ public:
         auto start = high_resolution_clock::now();
 
         int pos = (int)( hasher(value) % arraySize);
-        std::cout<<"pos is "<<pos<<"\tcurrent val is "<<value<<std::endl;
         if( arr[pos] == NULL){
             arr[pos] = new hashedArrayNode<T>;
             arr[pos]->value = value;
@@ -58,11 +57,13 @@ public:
         }
         else{
             hashedArrayNode<T> * temp = arr[pos];
-            while(temp != NULL)
+            while(temp->next != NULL)
                 temp = temp->next;
-            temp = new hashedArrayNode<T>;
-            temp->value = value;
+            temp->next = new hashedArrayNode<T>;
+            temp=temp->next;
+			temp->value = value;
             temp->next = NULL;
+
         }
 
         auto stop = high_resolution_clock::now();
