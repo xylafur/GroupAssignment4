@@ -58,7 +58,7 @@ public:
 
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to insert: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
+        std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
 
     }//end insert
     void deleteAtIndex(int index){
@@ -74,7 +74,7 @@ public:
 
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to delete: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
+        std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
     }
     int searchHelper(T val, int hi, int lo){
         if(hi < lo)
@@ -119,7 +119,7 @@ public:
 
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to search: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
+        std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
         return iterativeBinSearch(val);
     }
     void print(){
