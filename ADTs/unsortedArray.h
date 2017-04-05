@@ -32,7 +32,7 @@ public:
         
         auto stop = high_resolution_clock::now();
         
-        std::cout << "Time to insert: " << duration_cast<seconds>(stop - start).count() << " seconds" << std::endl;
+        std::cout << "Time to insert: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
     }
     void deleteAtIndex(int i){
         auto start = high_resolution_clock::now();
@@ -47,7 +47,7 @@ public:
 
         auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to delete: " << duration_cast<seconds>(stop - start).count() << " seconds" << std::endl;
+        std::cout << "Time to delete: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
         
         
     }
@@ -62,7 +62,7 @@ public:
         }
         
         auto stop = high_resolution_clock::now();
-        std::cout << "Time to search: " << duration_cast<seconds>(stop - start).count() << " seconds" << std::endl;
+        std::cout << "Time to search: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
        
         return -1; 
     }
