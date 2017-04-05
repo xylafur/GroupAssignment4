@@ -24,16 +24,18 @@ void createNode(std::string line, fileNode *head){
     head->next = NULL;
     
 }
-fileNode *readFile(std::string filename){
-    fileNode * head = new fileNode;
+int readFile(std::string filename, fileNode *head){
     fstream file(filename);
+    int count = 0;
     if(file.is_open() ){
         std::string line;
-        while( getline( file, line ))
+        while( getline( file, line )){
             createNode(line, head);
+            count++;
+        }
         file.close();
     }
-    return head;
+    return count;
 }
 
 #endif

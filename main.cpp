@@ -30,7 +30,7 @@ void otherFunction(){
     std::cout<<"calling functionction pointer"<<std::endl;
 }
 
-void callHashFunctions(){
+void callHashFunctions(int size, fileNode *head){
     HashedArray<int> *arr = new HashedArray<int>();
     for(int i = 0; i < 10; i++)
         arr->addElement(i);
@@ -68,8 +68,12 @@ void callUnsortedArrayFunctions(){
 }
 
 int main(){
-    callHashFunctions();
-    //callUnsortedArrayFunctions();
+    std::cout.precision(20);
+    std::string filename = "test.txt";
+    fileNode *head = new fileNode;
+    int size = readFile(filename, head);
+    //callHashFunctions();
+    callUnsortedArrayFunctions();
     //callSortedArrayFunctions();
 }
 
