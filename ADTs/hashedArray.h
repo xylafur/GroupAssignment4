@@ -47,7 +47,7 @@ public:
             deleteLinkedList(arr[i]);
     }
     void addElement(T value){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
 
         int pos = (int)( hasher(value) % arraySize);
         if( arr[pos] == NULL){
@@ -66,9 +66,10 @@ public:
 
         }
 
-        auto stop = high_resolution_clock::now();
+        /*auto stop = high_resolution_clock::now();
 
         std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+	*/
     }
     void print(){
         std::cout<<"{ ";
@@ -82,7 +83,7 @@ public:
         std::cout<<" }"<<std::endl;
     }
     bool search(T val){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
         
         int pos = (int)( hasher(val) % arraySize );
         hashedArrayNode<T> *node = arr[pos];
@@ -91,14 +92,14 @@ public:
                 return true;
             node = node->next;
         }
-        auto stop = high_resolution_clock::now();
+        //auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+        //std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
         
         return false;
     }
     void deleteByValue(T val){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
         
         int pos = (int)( hasher(val) % arraySize );
         hashedArrayNode<T> *node = arr[pos];
@@ -118,9 +119,9 @@ public:
             node = node->next;
         }
 
-        auto stop = high_resolution_clock::now();
+        //auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+        //std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
     }
 };
 
