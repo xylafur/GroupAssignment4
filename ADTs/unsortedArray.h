@@ -21,7 +21,7 @@ public:
         currentSize = 0;
     }
     void insert(T elm){
-        auto start = high_resolution_clock::now();
+       // auto start = high_resolution_clock::now();
         
         if(currentSize >= realSize)
             std::cout<<"Bruh this array is to tiny\n";
@@ -30,12 +30,12 @@ public:
             currentSize++;
         }
         
-        auto stop = high_resolution_clock::now();
+       // auto stop = high_resolution_clock::now();
         
-        std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+       // std::cout << "Time to insert: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
     }
     void deleteAtIndex(int i){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
         
         if(i >= currentSize)
             std::cout<<"Not a valid location to delete\n";
@@ -45,15 +45,15 @@ public:
             currentSize--;
         }
 
-        auto stop = high_resolution_clock::now();
+       // auto stop = high_resolution_clock::now();
 
-        std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+        //std::cout << "Time to delete: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
         
         
     }
     //returns the index 
     int search(T val){
-        auto start = high_resolution_clock::now();
+        //auto start = high_resolution_clock::now();
         
         for(int i = 0; i < currentSize; i++)
         {
@@ -61,8 +61,8 @@ public:
                 return i;
         }
         
-        auto stop = high_resolution_clock::now();
-        std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
+        //auto stop = high_resolution_clock::now();
+        //std::cout << "Time to search: " << duration_cast<nanoseconds>(stop - start).count() << " nanoseconds" << std::endl;
        
         return -1; 
     }
