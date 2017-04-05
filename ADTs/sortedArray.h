@@ -1,8 +1,15 @@
 #ifndef SORTED_ARRAY
-    #define SORTED_ARRAY
+#define SORTED_ARRAY
 #include <stdio.h>
 #include <iostream>
 #include <string>
+#include <ctime>
+#include <chrono>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std::chrono;
+
 
 template <class T>
 class SortedArray{
@@ -29,6 +36,8 @@ public:
         delete(arr);
     }
     void insert(T val){
+        auto start = high_resolution_clock::now();
+        
         if(realSize >= size)
             std::cout<<"trying to put to many elements in your sorted array..\n";
         else{
@@ -44,8 +53,15 @@ public:
             realSize++;
             bubbleUp(val, index);
         }//end else
+
+        auto stop = high_resolution_clock::now();
+
+        std::cout << "Time to insert: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
+        
     }//end insert
     void deleteAtIndex(int index){
+        auto start = high_resolution_clock::now();
+        
         if( index > realSize )
             std::cout<<"Invalid index to delete bruh\n";
         else{
@@ -53,6 +69,10 @@ public:
                 arr[i] = arr[i+1];
             realSize--;
         }
+
+        auto stop = high_resolution_clock::now();
+
+        std::cout << "Time to delete: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
     }
     int searchHelper(T val, int hi, int lo){
         if(hi < lo)
@@ -65,7 +85,7 @@ public:
             return searchHelper(val, hi, mid+1);
         else
             return searchHelper(val, mid, lo);
-            
+
     }
     int iterativeBinSearch(T val) {
         int lo = 0, hi = realSize, mid = (lo + hi) / 2;
@@ -90,8 +110,14 @@ public:
         return -1;
     }
     int search(T val){
+        auto start = high_resolution_clock::now();
+        
         std::cout<<"calling search helper with the values hi:"<<realSize<<std::endl;
         //return searchHelper(val, realSize, 0);
+
+        auto stop = high_resolution_clock::now();
+        
+        std::cout << "Time to search: " << duration_cast<milliseconds>(stop - start).count() << " milliseconds" << std::endl;
         return iterativeBinSearch(val);
     }
     void print(){
