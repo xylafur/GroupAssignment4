@@ -34,6 +34,7 @@ void otherFunction(){
 */
 
 void callHashFunctions(int size, fileNode *head){
+    std::cout<<"Calling hash functions"<<std::endl;
     HashedArray<int> *arr = new HashedArray<int>();
     for(int i = 0; i < size; i++, head=head->next)
         arr->addElement(head->val);
@@ -43,6 +44,7 @@ void callHashFunctions(int size, fileNode *head){
     std::cout<<"deleting value 5..\n";
     arr->deleteByValue(5);
     arr->print();
+    std::cout<<std::endl;
 }
 
 void callSortedArrayFunctions(int size, fileNode *head){
