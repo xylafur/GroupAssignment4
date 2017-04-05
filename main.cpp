@@ -35,8 +35,8 @@ void otherFunction(){
 
 void callHashFunctions(int size, fileNode *head){
     HashedArray<int> *arr = new HashedArray<int>();
-    for(int i = 0; i < 10; i++)
-        arr->addElement(i);
+    for(int i = 0; i < size; i++, head=head->next)
+        arr->addElement(head->val);
     arr->print();
     std::cout<<"searching for 5.. found = " << arr->search(5) <<std::endl;
     std::cout<<"searching for 11.. found = " << arr->search(11) <<std::endl;
@@ -45,29 +45,33 @@ void callHashFunctions(int size, fileNode *head){
     arr->print();
 }
 
-void callSortedArrayFunctions(){
-    SortedArray<int> arr(10);
-    for(int i = 11; i > 0; i--)
-        arr.insert(i);
+void callSortedArrayFunctions(int size, fileNode *head){
+    std::cout<<"Calling sorted Array Functions\n";
+    SortedArray<int> arr(size);
+    for(int i = 0; i < size; i++, head=head->next)
+        arr.insert(head->val);
     arr.print();
     std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
     std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
     std::cout<<"deleting index 5..\n";
     arr.deleteAtIndex(5);
     arr.print();
+    std::cout<<"\n\n";
 
 }
 
-void callUnsortedArrayFunctions(){
-    UnsortedArray<int> arr(10);
-    for(int i = 0; i < 10; i++)
-        arr.insert(i);
+void callUnsortedArrayFunctions(int size, fileNode *head){
+    std::cout<<"Calling unsorted Array functions\n";
+    UnsortedArray<int> arr(size);
+    for(int i = 0; i < 10; i++, head = head->next)
+        arr.insert(head->val);
     arr.print();
     std::cout<<"searching for 5.. index = " << arr.search(5) <<std::endl;
     std::cout<<"searching for 11.. index = " << arr.search(11) <<std::endl;
     std::cout<<"deleting index 5..\n";
     arr.deleteAtIndex(5);
     arr.print();
+    std::cout<<"\n\n";
 }
 
 int main(){
@@ -77,7 +81,9 @@ int main(){
     std::string filename = "test.txt";
     fileNode *head = new fileNode;
     int size = readFileToList(filename, head);
-    printAllLines(head);
 
+    callSortedArrayFunctions(size, head);
+    callUnsortedArrayFunctions(size, head);
+    callHashFunctions(size, head);
 }
 
