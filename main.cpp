@@ -22,13 +22,16 @@ struct stats{
     double timeTaken;
 };
 //function to take in a function pointer and return how long it took to complete
+/*
 double timerWrapper( void (*func)(void) ){
     func();
 }
 
+
 void otherFunction(){
     std::cout<<"calling functionction pointer"<<std::endl;
 }
+*/
 
 void callHashFunctions(int size, fileNode *head){
     HashedArray<int> *arr = new HashedArray<int>();
@@ -70,12 +73,11 @@ void callUnsortedArrayFunctions(){
 int main(){
     std::cout.setf(ios::fixed | ios::showpoint);
     std::cout.precision(20);
+
     std::string filename = "test.txt";
     fileNode *head = new fileNode;
-    int size = readFile(filename, head);
-    //callHashFunctions();
-    callUnsortedArrayFunctions();
-    
-        
+    int size = readFileToList(filename, head);
+    printAllLines(head);
+
 }
 

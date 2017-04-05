@@ -97,7 +97,7 @@ public:
         
         int pos = (int)( hasher(val) % arraySize );
         hashedArrayNode<T> *node = arr[pos];
-        if(node->value = val){
+        if(node->value == val){
             //case where the first value in the list is what we want to delete
             arr[pos] = node->next;
             delete(node);
