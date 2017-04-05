@@ -7,22 +7,33 @@
 
 #include <string>
 #include <fstream>
+using namespace std;
 //beacause the file should only contain ints im gonna go ahead and parse them
 struct fileNode{
     std::string strVal;
-    int val
-    fileNode *next;
+    int val;
+    fileNode *next = NULL;
 };
 
-fileNode readFile(std::string filename){
+void createNode(std::string line, fileNode *head){
+    //find tail
+    while(head != NULL)
+        head = head->next;
+    head = new fileNode;
+    head-> strVal = line;
+    head->next = NULL;
+    
+}
+fileNode *readFile(std::string filename){
+    fileNode * head = new fileNode;
     fstream file(filename);
     if(file.is_open() ){
-        fileNode * head = new fileNode;
+        std::string line;
+        while( getline( file, line ))
+            createNode(line, head);
+        file.close();
     }
-    //open flie
-    //create head
-    //pass head into file to get all values
-    //return head node 
+    return head;
 }
 
 #endif
